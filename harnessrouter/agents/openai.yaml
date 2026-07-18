@@ -1,0 +1,4 @@
+interface:
+  display_name: "HarnessRouter"
+  short_description: "Build agent-powered products with HarnessRouter"
+  default_prompt: "Use $harnessrouter to plan, configure, integrate, and test the agent-powered features in this product."
