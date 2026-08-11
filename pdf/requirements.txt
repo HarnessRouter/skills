@@ -1,0 +1,3 @@
+weasyprint>=66
+pypdf>=5
+pdfplumber>=0.11

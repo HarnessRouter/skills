@@ -1,0 +1,36 @@
+{
+  "$comment": [
+    "Which skills are baked into the HarnessRouter image, and which of those start switched on.",
+    "One folder per skill; the folder name IS the skill name and must match `name` here.",
+    "",
+    "include         — copy this folder into the image at build time. false leaves it in the repo",
+    "                  for people who want it, and out of the shipped image.",
+    "default_enabled — a newly created Harness starts with this skill on. Never a promise it stays",
+    "                  on: a Harness can switch any built-in off, and that choice always wins over",
+    "                  this flag.",
+    "",
+    "A skill folder may declare what it needs, and the image build honours all three for every",
+    "included skill:",
+    "  requirements.txt  — Python packages (pip)",
+    "  apt-packages.txt  — system packages, one per line",
+    "  install.sh        — anything else, run as root with network access at BUILD time only"
+  ],
+  "skills": [
+    {
+      "name": "pdf",
+      "title": "PDF",
+      "description": "Create PDFs from HTML with real page control, extract text and tables, merge, split, rotate, stamp, and fill forms.",
+      "include": true,
+      "default_enabled": true,
+      "origin": "HarnessRouter, Apache-2.0"
+    },
+    {
+      "name": "officecli",
+      "title": "Word, Excel and PowerPoint",
+      "description": "Create, read and edit .docx, .xlsx and .pptx — styles, tables, formulas, pivot tables, charts, tracked changes.",
+      "include": true,
+      "default_enabled": true,
+      "origin": "iOfficeAI/OfficeCLI v1.0.143, Apache-2.0 — see officecli/NOTICE.md"
+    }
+  ]
+}
