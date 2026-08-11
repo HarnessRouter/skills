@@ -99,7 +99,11 @@ Start here and replace the content.
          font-size:10pt; line-height:1.45; color:var(--ink); }
   header { border-bottom:2px solid var(--ink); padding-bottom:8px; margin-bottom:14px;
            display:flex; align-items:baseline; justify-content:space-between; gap:16px; }
-  h1 { font-size:24pt; font-weight:700; margin:0; letter-spacing:-.01em; }
+  /* Without these the title column shrinks to its content box and a two-word title wraps with
+     half the page still empty. flex-basis auto + a non-shrinking date is what keeps it on one line. */
+  header > div:first-child { flex:1 1 auto; min-width:0; }
+  header > .kicker { flex:0 0 auto; white-space:nowrap; }
+  h1 { font-size:24pt; font-weight:700; margin:0; letter-spacing:-.01em; text-wrap:balance; }
   .kicker { font-size:8.5pt; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; }
   h2 { font-size:11pt; font-weight:600; text-transform:uppercase; letter-spacing:.08em;
        color:var(--accent); margin:16px 0 6px; break-after:avoid; }
@@ -146,4 +150,6 @@ python3 scripts/pdf_preview.py out.pdf --outdir preview
 
 Read the PNG. The defects that matter are visual and none of them appear in the HTML: text
 overflowing its container, a table wider than the page, a heading stranded at the bottom, a footer
-overlapping the body, one line spilling onto a second page.
+overlapping the body, one line spilling onto a second page, and **a heading wrapping to a second
+line while the space beside it sits empty** — a flex container that shrank around its content is
+the usual cause.
