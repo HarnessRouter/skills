@@ -16,9 +16,14 @@
 
 2. **Appended "Notes for this environment".** Behaviour we verified by running it, that the
    upstream text does not cover: `--text` is silently ignored on `add` (properties need `--prop`),
-   a freshly created document has no built-in styles, the resident process must be flushed with
-   `close` before another program reads the file, PDF export needs an uninstalled plugin so
+   a freshly created document has no built-in styles, PDF export needs an uninstalled plugin so
    LibreOffice does that job, and there is no network at run time.
+
+   It also covers the resident flush, which cost us a real deliverable. The default writes to disk
+   seconds after the process goes idle, so a task that finishes right after writing a file loses
+   its content while `validate` still passes. The image sets `OFFICECLI_RESIDENT_FLUSH=each` to
+   remove the race rather than relying on the agent remembering to `close`; the note explains it
+   so nobody reintroduces the race by changing that variable.
 
 Nothing else was altered. Updating the vendored copy means re-pulling upstream `SKILL.md`, pinning
 the new release in `install.sh` with its checksum, and re-applying these two changes.

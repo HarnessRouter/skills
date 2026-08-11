@@ -429,9 +429,15 @@ opens the document and finds it blank. Check with `officecli view FILE text` bef
 with `officecli create` warns `style 'Heading1' not found in styles part` and renders as body text.
 Either start from a template that carries the styles, or set the formatting directly.
 
-**Flush before anything else reads the file.** officecli keeps the document open in a resident
-process for speed, so changes may not be on disk yet. Run `officecli close FILE` (or `save`) before
-converting, copying, attaching, or reading it with another program.
+**Flushing is automatic here — but know what it is.** officecli normally keeps an edited document
+open in a resident process and writes it to disk seconds after that process goes idle. A task that
+writes a document and then finishes races that timer, and the loser is silent: the file exists,
+`validate` passes against the in-memory copy, and the saved workbook is missing everything. We hit
+exactly that — a spreadsheet whose every cell went into a sheet the saved file did not contain.
+
+This image sets `OFFICECLI_RESIDENT_FLUSH=each`, so every command writes through and there is no
+race. You do not need `officecli close`. Do not set that variable to `auto` or `off`, and if you
+ever run officecli somewhere without it, close every file you touched before finishing.
 
 **PDF.** Upstream PDF export needs a plugin that is not installed. Convert with LibreOffice instead:
 
