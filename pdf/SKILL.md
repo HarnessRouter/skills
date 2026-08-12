@@ -46,8 +46,9 @@ rules that make the difference, plus a one-pager skeleton to start from.
 
 **Fonts.** Only what is installed will render: DejaVu Sans, DejaVu Serif, DejaVu Sans Mono,
 Liberation Sans, Liberation Serif, Liberation Mono. Name one explicitly with a generic fallback —
-an unnamed font is not a design decision. There is no network access at render time, so a Google
-Fonts `@import` silently falls back.
+an unnamed font is not a design decision. A remote `@import` (Google Fonts and the like) is not
+worth the risk: WeasyPrint renders the page whether or not the fetch succeeded, so a slow or
+blocked request costs you the typeface silently rather than failing.
 
 ### Fitting one page
 

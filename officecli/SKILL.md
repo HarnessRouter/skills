@@ -449,8 +449,10 @@ soffice --headless --convert-to pdf --outdir . report.docx
 For creating a PDF from scratch rather than converting one, use the `pdf` skill — it renders from
 HTML and gives you real control over the page.
 
-**No network at run time.** Anything in the upstream text that downloads, installs, or fetches a
-remote template will fail. Work with what is in the image.
+**Prefer what is in the image.** The binary and its dependencies are already installed; the
+upstream text's install and download steps are unnecessary here and pin nothing. A task can reach
+the network, but a document build that depends on a remote fetch is one outage away from failing,
+so use the local install.
 
 **Where to write files.** Write outputs to the working directory. Files there are collected and
 returned to the user; anything in `/tmp` is lost when the task ends.

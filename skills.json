@@ -13,7 +13,7 @@
     "included skill:",
     "  requirements.txt  — Python packages (pip)",
     "  apt-packages.txt  — system packages, one per line",
-    "  install.sh        — anything else, run as root with network access at BUILD time only"
+    "  install.sh        — anything else, run as root at BUILD time"
   ],
   "skills": [
     {
@@ -23,6 +23,14 @@
       "include": true,
       "default_enabled": true,
       "origin": "HarnessRouter, Apache-2.0"
+    },
+    {
+      "name": "imagegen",
+      "title": "Image generation",
+      "description": "Generate and edit images — illustrations, photos, mockups, textures, transparent cutouts.",
+      "include": true,
+      "default_enabled": true,
+      "origin": "openai/skills .system/imagegen, Apache-2.0 — see imagegen/NOTICE.md"
     },
     {
       "name": "officecli",
