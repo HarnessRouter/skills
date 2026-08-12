@@ -10,14 +10,13 @@
 ## Changes made to the upstream SKILL.md
 
 1. **Replaced the "Install" section.** Upstream tells the agent to `curl | bash` from
-   `d.officecli.ai`. Tasks here have no network, so the instruction could only ever fail, and its
-   failure reads as a broken tool. The binary is baked into the image instead, and the section now
-   says where it is.
+   `d.officecli.ai`. The binary is baked into the image instead — pinned to a release and verified
+   by SHA-256 — so the section says where it is and why not to re-install over it.
 
 2. **Appended "Notes for this environment".** Behaviour we verified by running it, that the
    upstream text does not cover: `--text` is silently ignored on `add` (properties need `--prop`),
-   a freshly created document has no built-in styles, PDF export needs an uninstalled plugin so
-   LibreOffice does that job, and there is no network at run time.
+   a freshly created document has no built-in styles, and PDF export needs an uninstalled plugin
+   so LibreOffice does that job.
 
    It also covers the resident flush, which cost us a real deliverable. The default writes to disk
    seconds after the process goes idle, so a task that finishes right after writing a file loses

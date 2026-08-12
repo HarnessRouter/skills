@@ -30,7 +30,8 @@ three is a mistake.
 Set `max-width: 68ch` on running prose, or use columns. A full-width line at 10pt on Letter is
 roughly 110 characters, and the eye loses its place returning to the next line.
 
-Available families — nothing else will render, and there is no network to fetch fonts:
+Available families — nothing else is installed, and a remote font fetch fails open (the page
+renders without it rather than erroring), so name one of these:
 
 ```css
 font-family: 'DejaVu Sans', 'Liberation Sans', sans-serif;   /* body */

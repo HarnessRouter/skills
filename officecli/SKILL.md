@@ -9,9 +9,10 @@ AI-friendly CLI for .docx, .xlsx, .pptx. Single binary, no dependencies, no Offi
 
 ## Install
 
-Already installed at `/usr/local/bin/officecli` — run it directly. Do not try to install it: a task
-has no network access, so the upstream install script cannot work here and its failure would look
-like a broken tool rather than a missing network.
+Already installed at `/usr/local/bin/officecli` — run it directly, and do not run the upstream
+install script. The version here is pinned and checksum-verified; re-installing would silently
+swap it for whatever is current, which is exactly the kind of change nobody notices until a
+customer's document comes out wrong.
 
 ---
 
