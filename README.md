@@ -1,4 +1,27 @@
-# HarnessRouter built-in skills
+<div align="center">
+  <a href="https://harnessrouter.ai">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset=".github/images/logo-dark.png">
+      <source media="(prefers-color-scheme: light)" srcset=".github/images/logo-light.png">
+      <img alt="HarnessRouter" src=".github/images/logo-light.png" width="55%">
+    </picture>
+  </a>
+</div>
+
+<div align="center">
+  <h3>Built-in skills for agent harnesses.</h3>
+</div>
+
+<div align="center">
+
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
+[![Built on HarnessRouter](https://img.shields.io/badge/Built_on-HarnessRouter-111111)](https://github.com/HarnessRouter/harnessrouter)
+[![Discord](https://img.shields.io/badge/Discord-join-5865F2?logo=discord&logoColor=white)](https://discord.gg/nPcbwqVPb2)
+[![X](https://img.shields.io/badge/Follow-%40HARNESSROUTER-000000?logo=x&logoColor=white)](https://x.com/HARNESSROUTER)
+
+</div>
+
+<br>
 
 The skills baked into the HarnessRouter image. Every Harness can use them, and every Harness can
 switch any of them off.
@@ -41,6 +64,13 @@ The folder name is the skill name and must match `name`.
 3. Add an entry to `skills.json`.
 4. Make sure it works without a network. A task has no internet access, so a skill that downloads a
    template or installs a package at run time fails in a way that looks like a broken tool.
+
+## Resources
+
+- **[HarnessRouter](https://github.com/HarnessRouter/harnessrouter)** — the open-source engine that loads these skills.
+- **[Documentation and Cloud](https://harnessrouter.ai)** — hosted service, guides, and pricing.
+- **[Unified Harness Protocol](https://unifiedharnessprotocol.org)** — the open standard behind it.
+- **[Discord](https://discord.gg/nPcbwqVPb2)** — community for questions and integrations.
 
 ## Licensing
 
