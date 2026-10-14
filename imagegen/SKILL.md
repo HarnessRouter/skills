@@ -285,17 +285,20 @@ If installation is not possible in this environment, tell the user which depende
 
 Added by HarnessRouter; not part of the upstream skill.
 
-**Use `scripts/hr_image_gen.py`.** Neither upstream mode applies as written here:
+**Use `scripts/hr_image_gen.py` from this skill's folder.** Neither upstream mode applies as written here:
 
 - The built-in `image_gen` tool exists only inside Codex, so it is unavailable on Claude Code and
   Hermes.
 - The upstream CLI reads `OPENAI_API_KEY`, and a task never holds a provider key — that is
   deliberate, and it is why the wrapper exists.
 
+Run it by its full path, from the task's working directory, so the image is saved where the user
+gets it. `<skill folder>` is the folder this SKILL.md is in, the one your skills list names:
+
 ```bash
-python3 scripts/hr_image_gen.py "a red bicycle against a white wall" -o bike.png
-python3 scripts/hr_image_gen.py "product mockup" -o hero.png --size 1536x1024 --quality high
-python3 scripts/hr_image_gen.py "cut out the subject" -o cut.png --edit photo.png --background transparent
+python3 <skill folder>/scripts/hr_image_gen.py "a red bicycle against a white wall" -o bike.png
+python3 <skill folder>/scripts/hr_image_gen.py "product mockup" -o hero.png --size 1536x1024 --quality high
+python3 <skill folder>/scripts/hr_image_gen.py "cut out the subject" -o cut.png --edit photo.png --background transparent
 ```
 
 Everything upstream says about prompting, the use-case taxonomy, and asset types still applies —
